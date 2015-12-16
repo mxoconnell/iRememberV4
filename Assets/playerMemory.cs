@@ -1,5 +1,5 @@
 using SimpleSQL;
-
+//This class holds the playerMemory object
 public class playerMemory
 {
 	// No pimary key used

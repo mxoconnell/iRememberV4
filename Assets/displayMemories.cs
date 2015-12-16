@@ -2,11 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 /// <summary>
-/// This script shows how to call a simple SQL query from a database using the class definition of the
-/// database to format the results.
-/// 
-/// In this example we overwrite the working database since no data is being changed. This is set in the 
-/// SimpleSQLManager gameobject in the scene.
+/// This script displays memories to screen and establishes how a database should be interacted with
 /// </summary>
 public class displayMemories : MonoBehaviour {
 

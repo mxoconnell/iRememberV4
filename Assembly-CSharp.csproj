@@ -45,12 +45,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GameControl.cs" />
      <Compile Include="Assets\changePicture.cs" />
      <Compile Include="Assets\changeScene.cs" />
      <Compile Include="Assets\checkRecall.cs" />
+     <Compile Include="Assets\createMemory.cs" />
      <Compile Include="Assets\displayMemories.cs" />
-     <Compile Include="Assets\generateRandomMemory.cs" />
      <Compile Include="Assets\playerMemory.cs" />
      <None Include="Assets\SimpleSQL\readme.txt" />
  <Reference Include="UnityEngine.UI">
