@@ -1,6 +1,6 @@
 ﻿//This script is used in the Main Menu to randomly generate pictures and display them on the screen
 //Credit: forum.unity3d.com/threads/resources-subfolder.36918
-//Note: in all unity paths the backslash is represented by a forwardslash 
+//Note: in all unity paths the backslash is represented by a forwardslash (clash must point northeast)
 
 using UnityEngine;
 using System.Collections;
@@ -12,24 +12,33 @@ using System.IO;//for directoryInfo & FileInfo
 public class changePicture : MonoBehaviour {
 
      
-    public UnityEngine.UI.RawImage imgDisplay;
+public UnityEngine.UI.RawImage imgDisplay;
+private float nextUsage, delay;
 
     void Start () {
+        delay = 0.5f;
+        //Start with random picture
         //get random picture name
         string imgName = getDisplayImageName();
         //display the picture
-        Debug.Log("Looking for..." + imgName);
-        //Debug.Log("Looking for..." + +imgName );
-        imgDisplay.texture = Resources.Load<Texture>( imgName);//"pic" works inside  "Female Pictures/"
-
-
+        imgDisplay.texture = Resources.Load<Texture>(imgName);
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    
-	}
+
+        if (Time.time > nextUsage)
+        {
+            nextUsage = Time.time + delay;
+            //Replace display image
+            //get random picture name
+            string imgName = getDisplayImageName();
+            //display the picture
+            imgDisplay.texture = Resources.Load<Texture>(imgName);
+        }
+    }
+
 
     //returns an image to display. The image is of a randomly chosen file from the male or femail pictures directory".
     public string getDisplayImageName()
@@ -57,7 +66,7 @@ public class changePicture : MonoBehaviour {
 
         FileInfo[] pictures = dir.GetFiles("*.*");//create a random index based on size of directory
         int randomIndex = UnityEngine.Random.Range(0, pictures.Length - 1);
-        Debug.Log("IMG Found:" + pictures[randomIndex]);
+        //Debug.Log("IMG Found:" + pictures[randomIndex]);
        
 
         randomImageName = pictures[randomIndex].ToString(); // this will look something like this: "Assets\Resources\Male Pictures\file8341308807137.jpg.meta"
@@ -80,17 +89,13 @@ public class changePicture : MonoBehaviour {
         //Chop off begining of path: 
         //move the begining of the path from the file name so that we get "Male Pictures\file8341308807137.jpg.meta"
         randomImageName = randomImageName.Substring(randomImageName.IndexOf(startDelimiter));
-        Debug.Log("after front chop:" + randomImageName);
 
         //Chop off the end of path:
         int nameLength = randomImageName.LastIndexOf(endDelimiter);
-        Debug.Log("length:" + nameLength);
-        //int nameLength = (randomImageName.LastIndexOf(endDelimiter) - randomImageName.LastIndexOf("\\"));//distance from where name begins to ".jpg" or ".JPG"
+
         randomImageName = randomImageName.Substring(0, nameLength);//we trim it to  "file8341308807137"
 
-        Debug.Log("Name:" + randomImageName);
-
-        randomImageName.Replace("//","\\");//replace all backslashes with forward slashes
+        randomImageName = randomImageName.Replace("\\","/");//replace all backslashes with forward slashes
         return randomImageName;
     }
 }

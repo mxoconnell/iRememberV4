@@ -6,7 +6,7 @@
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
 	<RootNamespace></RootNamespace>
-	<ProjectGuid>{3625CA2D-E1A0-3E59-07F4-823502BE5D4D}</ProjectGuid>
+	<ProjectGuid>{029E4E9F-757C-88E2-9F1F-E20762BD923A}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,15 +46,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\GameControl.cs" />
-     <Compile Include="Assets\SimpleSQL\Demos\Scripts\02_ComplexQuery\ComplexQuery.cs" />
-     <Compile Include="Assets\SimpleSQL\Demos\Scripts\03_Insert\InsertCommand.cs" />
-     <Compile Include="Assets\SimpleSQL\Demos\Scripts\04_Update\UpdateCommand.cs" />
-     <Compile Include="Assets\SimpleSQL\Demos\Scripts\05_Delete\DeleteCommand.cs" />
-     <Compile Include="Assets\SimpleSQL\Demos\Scripts\06_CreateAlterAndDropTable\CreateAlterAndDropTable.cs" />
-     <Compile Include="Assets\SimpleSQL\Demos\Scripts\07_SimpleTable\SimpleTable.cs" />
-     <Compile Include="Assets\SimpleSQL\Demos\Scripts\Fantasy Data\Location.cs" />
-     <Compile Include="Assets\SimpleSQL\Demos\Scripts\SciFi Data\PlayerStats.cs" />
-     <Compile Include="Assets\SimpleSQL\Demos\Scripts\SciFi Data\StarShip.cs" />
      <Compile Include="Assets\changePicture.cs" />
      <Compile Include="Assets\changeScene.cs" />
      <Compile Include="Assets\checkRecall.cs" />
@@ -62,20 +53,14 @@
      <Compile Include="Assets\generateRandomMemory.cs" />
      <Compile Include="Assets\playerMemory.cs" />
      <None Include="Assets\SimpleSQL\readme.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
  <Reference Include="SimpleSQL_Runtime">
- <HintPath>C:/Users/Matthew/Desktop/IRemember Proj/iRemember/iRememberV3/Assets/SimpleSQL/Plugins/SimpleSQL_Runtime.dll</HintPath>
+ <HintPath>C:/Users/Matthew/Desktop/IRemember Proj/iRemember/iRememberV4/Assets/SimpleSQL/Plugins/SimpleSQL_Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
