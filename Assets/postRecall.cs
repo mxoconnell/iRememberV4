@@ -5,6 +5,7 @@ public class postRecall : MonoBehaviour {
     public UnityEngine.UI.RawImage imgDisplay;//shows image of previously guessed memory
     public UnityEngine.UI.Text txtRecallEvaluation; //displays: if user recall was correct
     public UnityEngine.UI.Text txtMemoryDisplayText; //displays: "This memory was titled: " + memory.displayText
+
     // Use this for initialization
     void Start () {
         imgDisplay.texture = Resources.Load<Texture>(PlayerPrefs.GetString("memoryImageLocation"));
