@@ -6,8 +6,12 @@ public class checkRecall : MonoBehaviour {
 
     public SimpleSQL.SimpleSQLManager dbManager;// reference to our database manager object in the scene (to get prior memories and evaluate recall)
     public UnityEngine.UI.RawImage imgDisplay;
+
+    //Buttons/Labels to deactivate if no memories are left
     public UnityEngine.UI.Button btnTestRecall;
-    
+    public UnityEngine.UI.Text txtDisplay;
+    public GameObject inputField;
+
     private  memoryMachine scriptToRecallMemories;
     private playerMemory memoryToRecall;   
 
@@ -23,6 +27,8 @@ public class checkRecall : MonoBehaviour {
         else{
             //No memories to recall
             btnTestRecall.interactable = false;
+            txtDisplay.enabled = false;
+            inputField.SetActive(false);
             //default display image of "no memories found" will be displayed
         }
         
