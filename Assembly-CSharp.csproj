@@ -50,7 +50,9 @@
      <Compile Include="Assets\checkRecall.cs" />
      <Compile Include="Assets\createMemory.cs" />
      <Compile Include="Assets\displayMemories.cs" />
+     <Compile Include="Assets\memoryMachine.cs" />
      <Compile Include="Assets\playerMemory.cs" />
+     <Compile Include="Assets\postRecall.cs" />
      <None Include="Assets\SimpleSQL\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
