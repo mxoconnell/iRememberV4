@@ -10,6 +10,7 @@ public class checkRecall : MonoBehaviour {
     //Buttons/Labels to deactivate if no memories are left
     public UnityEngine.UI.Button btnTestRecall;
     public UnityEngine.UI.Text txtDisplay;
+    public UnityEngine.UI.Text txtNoMemoriesFound;
     public GameObject inputField;
 
     private  memoryMachine scriptToRecallMemories;
@@ -23,13 +24,13 @@ public class checkRecall : MonoBehaviour {
         if(memoryToRecall != null){ 
             //display picture for user to recall
             imgDisplay.texture = Resources.Load<Texture>(memoryToRecall.imageLocation);
+            txtNoMemoriesFound.enabled = false;//remove text that says "no memories found"
         }
         else{
             //No memories to recall
             btnTestRecall.interactable = false;
             txtDisplay.enabled = false;
             inputField.SetActive(false);
-            //default display image of "no memories found" will be displayed
         }
         
     }

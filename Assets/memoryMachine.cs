@@ -1,7 +1,7 @@
 ﻿//This script is used in the Main Menu to randomly generate pictures and display them on the screen
 //Credit: forum.unity3d.com/threads/resources-subfolder.36918
 //Note: in all unity paths the backslash is represented by a forwardslash (clash must point northeast)
-
+//Note: Changes to database need to be reflected in teh working copy which is located here: Debug.Log("Path:"+Application.persistentDataPath);
 using UnityEngine;
 using System.Collections;
 using System;
@@ -39,16 +39,21 @@ public class memoryMachine {
         List<nameOptions> memoriesOnFile = nameDatabase.Query<nameOptions>(
                                                         "SELECT " +
                                                             "W.femaleName, " +
-                                                            "W.maleName " +
+                                                            "W.maleName, " +
+                                                            "W.lastName " +
                                                         "FROM " +
                                                             "names W "
                                                         );
         nameOptions nameOptionsToDisplay = memoriesOnFile[UnityEngine.Random.Range(0, memoriesOnFile.Count)];
 
+        string name;
         if (isMale)
-            return nameOptionsToDisplay.maleName;
+            name = nameOptionsToDisplay.maleName;
         else
-            return nameOptionsToDisplay.femaleName;
+            name = nameOptionsToDisplay.femaleName;
+
+        //now that an appropriate first name is in place, we append a random surname
+        return name + " " + memoriesOnFile[UnityEngine.Random.Range(0, memoriesOnFile.Count)].lastName;
     }
 
     //returns an image to display. The image is of a randomly chosen file from the male or femail pictures directory".
