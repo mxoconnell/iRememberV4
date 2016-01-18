@@ -22,14 +22,21 @@ public class memoryMachine {
         }
 
         string displayTxt = "";
-        //if this field was left null, then we client doesn't want a name
+        long tolRecall = 0;
+        //if this field was left null, then we client only wants a picture
         if (nameDatabase != null){
             displayTxt = getDisplayText(isMale, nameDatabase);
+            tolRecall =  System.DateTime.Now.ToBinary(); // We use the current time as the initial timeOfLastRecall
+            /***Debug.Log("TOLR:" + System.DateTime.Now);
+            Debug.Log("TOLR binary:" + tolRecall);
+            //testin...
+            DateTime check = DateTime.FromBinary(tolRecall);
+            Debug.Log("TOLR check:" + check);***/
         }
          
         string imgLocation = getDisplayImageName(isMale);
         
-        playerMemory newMemory = new playerMemory { displayText = displayTxt, imageLocation = imgLocation };
+        playerMemory newMemory = new playerMemory { displayText = displayTxt, imageLocation = imgLocation, timeOfLastRecall = tolRecall.ToString() };
         return newMemory;
     }
 
@@ -56,7 +63,7 @@ public class memoryMachine {
         return name + " " + memoriesOnFile[UnityEngine.Random.Range(0, memoriesOnFile.Count)].lastName;
     }
 
-    //returns an image to display. The image is of a randomly chosen file from the male or femail pictures directory".
+    //returns an image to display. The image is of a randomly chosen file from the male or female pictures directory".
     private string getDisplayImageName(bool isMale){
         string startDelimiter = "";//this will tell me when to chop of the begining of the file path
         string randomImageName ="";
@@ -108,13 +115,14 @@ public class memoryMachine {
         return randomImageName;
     }
 
-    //returns a randmemory previously made by the user for ze to recall. Will return null if there are no memories.
+    //returns a memory previously made by the user for the user to recall. Selection is random. Returns null if there are no memories.
     public playerMemory getSavedMemory(SimpleSQL.SimpleSQLManager savedMemories){
         // Compile a list of memories previously created by the user
         List<playerMemory> memoriesOnFile = savedMemories.Query<playerMemory>(
                                                         "SELECT " +
                                                             "W.displayText, " +
-                                                            "W.imageLocation " +
+                                                            "W.imageLocation, " +
+                                                            "W.timeOfLastRecall " +
                                                         "FROM " +
                                                             "playerMemory W "
                                                         );
@@ -125,5 +133,31 @@ public class memoryMachine {
 
         playerMemory memoryToRemember = memoriesOnFile[UnityEngine.Random.Range(0, memoriesOnFile.Count)];
         return memoryToRemember;
+    }
+
+    // Updates the information of a memory. Used to changed the timeOfLastRecall to the current time when the display text is revealed to a user postRecall.
+    // Note: The displayText, which is the primary key, cannot be changed. If a memory matching the displayText input is not found, a new entry will not be created.
+    public void updateMemory(SimpleSQL.SimpleSQLManager savedMemories, playerMemory memoryToUpdate){
+       
+        //TODO
+        
+        
+        /*// Compile a list of memories previously created by the user
+        List<playerMemory> memoriesOnFile = savedMemories.Query<playerMemory>(
+                                                        "SELECT " +
+                                                            "W.displayText, " +
+                                                            "W.imageLocation, " +
+                                                            "W.timeOfLastRecall " +
+                                                        "FROM " +
+                                                            "playerMemory W "
+                                                        );
+        if (memoriesOnFile.Count <= 0)
+        {
+            //no memories present
+            return null;
+        }
+
+        playerMemory memoryToRemember = memoriesOnFile[UnityEngine.Random.Range(0, memoriesOnFile.Count)];
+        return memoryToRemember;*/
     }
 }

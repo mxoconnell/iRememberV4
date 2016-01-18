@@ -25,15 +25,10 @@ private playerMemory newMemory;
         imgDisplay.texture = Resources.Load<Texture>(newMemory.imageLocation);
     }
 	
-	// Update is called once per frame
-	void Update () {
-
-    }
-
     //Save displayed memory to file
    public void saveMemory(){
         // Call our SQL statement using ? to bind our variables
-        dbManager.Execute("INSERT INTO playerMemory (displayText, imageLocation) VALUES (?, ?)", newMemory.displayText, newMemory.imageLocation);
+        dbManager.Execute("INSERT INTO playerMemory (displayText, imageLocation, timeOfLastRecall) VALUES (?, ?, ?)", newMemory.displayText, newMemory.imageLocation, newMemory.timeOfLastRecall);
         Debug.Log("Memory Saved!");
         //Now return user to the main menu
         Application.LoadLevel("mainMenu");

@@ -15,6 +15,8 @@ public class postRecall : MonoBehaviour {
         if (PlayerPrefs.GetInt("wasUserCorrect")==1){
             txtRecallEvaluation.text = "Correct!";
             txtRecallEvaluation.color = Color.green;
+            PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + PlayerPrefs.GetInt("elapsedMinutes"));
+            Debug.Log("Score is: " + PlayerPrefs.GetInt("Score"));
         }
         else{
             txtRecallEvaluation.text = "False!";
